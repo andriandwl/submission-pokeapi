@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+
 import PokemonThumb from "./PokemonThumb";
 import SearchBar from "./SearchBar";
 
-function Main() {
+function Kategori4() {
   const [allPokemons, setAllPokemons] = useState([]);
   const [loadMore, setLoadMore] = useState(
     "https://pokeapi.co/api/v2/pokemon?limit=20"
@@ -42,12 +43,10 @@ function Main() {
   useEffect(() => {
     getAllPokemons();
   }, []);
+
   const filterPoke = React.useMemo(
-    () =>
-      allPokemons?.filter((poke) => {
-        return poke.name.toLowerCase().includes(search.toLowerCase());
-      }),
-    [allPokemons, search]
+    () => allPokemons?.filter((poke) => poke.types[0].type.name === "bug"),
+    [allPokemons]
   );
   return (
     <div className="app-contaner">
@@ -74,4 +73,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default Kategori4;

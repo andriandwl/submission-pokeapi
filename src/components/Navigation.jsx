@@ -22,15 +22,11 @@ function Navigation() {
             Home
           </Link>
         </li>
-        <Link to="/menu" className="nav-link px-2" style={{ color: "#90bcab" }}>
+        <Link to="/" className="nav-link px-2" style={{ color: "#90bcab" }}>
           Pokemon
         </Link>
         <li>
-          <Link
-            to="/about"
-            className="nav-link px-2"
-            style={{ color: "#90bcab" }}
-          >
+          <Link to="/" className="nav-link px-2" style={{ color: "#90bcab" }}>
             About
           </Link>
         </li>
