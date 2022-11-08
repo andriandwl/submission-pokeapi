@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import PokemonThumb from "./PokemonThumb";
 import SearchBar from "./SearchBar";
 
-function Kategori() {
+function Kategori1() {
   const [allPokemons, setAllPokemons] = useState([]);
   const [loadMore, setLoadMore] = useState(
     "https://pokeapi.co/api/v2/pokemon?limit=20"
@@ -43,13 +43,17 @@ function Kategori() {
     getAllPokemons();
   }, []);
 
+  const filterPoke = React.useMemo(
+    () => allPokemons?.filter((poke) => poke.types[0].type.name === "water"),
+    [allPokemons]
+  );
   return (
     <div className="app-contaner">
       <div className="pokemon-container">
         <SearchBar keyword={search} keywordChange={onKeywordChangeHandler} />
         <div className="all-container gap-2">
           <div className="d-flex flex-wrap gap-2 justify-content-center">
-            {allPokemons.map((pokemonStats, index) => (
+            {filterPoke.map((pokemonStats, index) => (
               <PokemonThumb
                 key={index}
                 id={pokemonStats.id}
@@ -68,4 +72,4 @@ function Kategori() {
   );
 }
 
-export default Kategori;
+export default Kategori1;
